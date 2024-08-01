@@ -1,7 +1,14 @@
 const express = require('express');
 const app = express(); 
 const PORT = 3000;
-app.get('/', (req, res) =>{
+
+//route controller with a path parameter
+app.get('/users/:id', (req, res) => {
+    const userId = req.params.id;
+    res.send(`User with ID ${userId}`);
+});
+
+app.get('/', (req, res) =>{ 
     res.send('Hello, World');
 });
 
