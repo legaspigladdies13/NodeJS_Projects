@@ -1,18 +1,33 @@
 const express = require('express');
-const app = express(); 
-const PORT = 3000;
+const app = express();
 
-//route controller with a path parameter
-app.get('/users/:id', (req, res) => {
-    const userId = req.params.id;
-    res.send(`User with ID ${userId}`);
+const PORT =3000;
+
+
+//Query Parameters
+app.get('/', (req, res) =>{
+
+    const id = req.query.id;
+    const username = req.query.username;
+
+    res.send(`User ID: ${id}. Username: ${username}`);
+
 });
+ 
+app.get('/products/:id', (req, res) =>{
 
-app.get('/', (req, res) =>{ 
-    res.send('Hello, World');
+    const productId = req.params.id; 
+
+    const product = [
+        {"id":1, "name" : "Product A"},
+        {"id":2, "name" : "Product B"},
+        {"id":3, "name" : "Product C"},
+
+    ]
+
 });
 
 app.listen(PORT, () => {
-    console.log('Server stard on port $(PORT}');
+    console.log('Server stard on port ${PORT}');
     
 });       
